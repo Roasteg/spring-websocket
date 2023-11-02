@@ -2,7 +2,6 @@ package dev.roasteg.chat.controller;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.roasteg.chat.dto.ChatUserDTO;
@@ -12,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/users")
 public class ChatUserController {
     private final ChatService chatService;
 
