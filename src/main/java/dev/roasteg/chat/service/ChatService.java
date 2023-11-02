@@ -28,7 +28,7 @@ public class ChatService {
                 .toList();
     }
 
-    public void sendMessage(Long userId, String text) {
+    public ChatMessageDTO sendMessage(Long userId, String text) {
         final ChatUser chatUser = chatUserRepository
                 .findById(userId)
                 .orElseThrow(UserNotFound::new);
@@ -37,7 +37,8 @@ public class ChatService {
                 .text(text)
                 .sentByUser(chatUser)
                 .build();
-        chatMessageRepository.save(message);
+        final ChatMessage savedMessage = chatMessageRepository.save(message);
+        return mapper.map(savedMessage, ChatMessageDTO.class);
     }
 
     public ChatUserDTO addUser(String name) {
